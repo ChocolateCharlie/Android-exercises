@@ -6,12 +6,15 @@ import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity {
 
+    private TextView text = null;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        TextView text = new TextView(this);
-        text.setText("Bonjour, vous me devez 1 000 000 $ .");
+        text = new TextView(this);
+        text.setText(R.string.greeting);
+
         setContentView(text);
     }
 }
