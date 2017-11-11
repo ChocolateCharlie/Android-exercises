@@ -15,5 +15,6 @@ public class MainActivity extends AppCompatActivity {
 
         monTexte = (TextView)findViewById(R.id.text);
         monTexte.setText("Le texte de notre TextView");
+        monTexte.setPadding(50, 60, 70, 90);
     }
 }
