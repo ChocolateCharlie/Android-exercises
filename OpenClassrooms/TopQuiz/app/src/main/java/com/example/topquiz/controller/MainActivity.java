@@ -1,4 +1,4 @@
-package com.example.topquiz;
+package com.example.topquiz.controller;
 
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
@@ -10,8 +10,12 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import com.example.topquiz.R;
+import com.example.topquiz.model.User;
+
 public class MainActivity extends AppCompatActivity {
 
+    private User mUser;
     private TextView mGreetingText;
     private EditText mNameInput;
     private Button mPlayButton;
@@ -21,6 +25,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        mUser = new User();
         mGreetingText = (TextView) findViewById(R.id.activity_main_greeting_txt);
         mNameInput = (EditText) findViewById(R.id.activity_main_name_input);
         mPlayButton = (Button) findViewById(R.id.activity_main_play_btn);
@@ -44,10 +49,15 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-/* Add a listener to the play button : if user presses it, the game starts */
+/* Add a listener to the play button : if user presses it :
+    - the input is saved as the FirstName
+    - the game starts
+*/
         mPlayButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                mUser.setFirstName(mNameInput.getText().toString());
+
                 Intent gameActivity = new Intent(MainActivity.this, GameActivity.class);
                 startActivity(gameActivity);
             }
