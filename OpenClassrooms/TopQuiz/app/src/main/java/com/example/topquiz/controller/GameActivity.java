@@ -1,5 +1,7 @@
 package com.example.topquiz.controller;
 
+import android.content.DialogInterface;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -18,6 +20,8 @@ import java.util.Arrays;
 public class GameActivity extends AppCompatActivity implements View.OnClickListener {
     private QuestionBank mQuestionBank;
     private Question mCurrentQuestion;
+    private int mNumberOfQuestions;
+    private int mScore;
     private TextView mQuestionText;
     private Button mAnswer1;
     private Button mAnswer2;
@@ -31,6 +35,8 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
 
         mQuestionBank = this.generateQuestions();
         mCurrentQuestion = mQuestionBank.getQuestion();
+        mNumberOfQuestions = 4;
+        mScore = 0;
 
         mQuestionText = (TextView) findViewById(R.id.activity_game_question_text);
         mAnswer1 = (Button) findViewById(R.id.activity_game_answer1_btn);
@@ -75,16 +81,41 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
         mAnswer4.setText(question.getChoicelist().get(3));
     }
 
-/* Check user answer and show toast depending on correctness */
+/*
+** Check user answer and show toast depending on correctness
+** Check end of game : end the game or launch new question
+*/
     @Override
     public void onClick(View v) {
         int responseIndex = (int) v.getTag();
 
+// Check correctness
         if (responseIndex == mCurrentQuestion.getAnswerIndex()) {
             Toast.makeText(this, "Correct !", Toast.LENGTH_SHORT).show();
+            mScore ++;
         }
         else {
             Toast.makeText(this, "Nice try !", Toast.LENGTH_SHORT).show();
+        }
+
+// Check end of game
+        if (--mNumberOfQuestions == 0) {
+            AlertDialog.Builder builder = new AlertDialog.Builder(this);
+
+            builder .setTitle("Well done !")
+                    .setMessage("Your score is " + mScore + " !")
+                    .setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            finish();
+                        }
+                    })
+                    .create()
+                    .show();
+        }
+        else {
+            mCurrentQuestion = mQuestionBank.getQuestion();
+            displayQuestion(mCurrentQuestion);
         }
     }
 }
