@@ -92,14 +92,14 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
 // Check correctness
         if (responseIndex == mCurrentQuestion.getAnswerIndex()) {
             Toast.makeText(this, "Correct !", Toast.LENGTH_SHORT).show();
-            mScore ++;
+            // mScore ++;
         }
         else {
             Toast.makeText(this, "Nice try !", Toast.LENGTH_SHORT).show();
         }
 
 // Check end of game
-        if (--mNumberOfQuestions == 0) {
+       /* if (--mNumberOfQuestions == 0) {
             AlertDialog.Builder builder = new AlertDialog.Builder(this);
 
             builder .setTitle("Well done !")
@@ -116,6 +116,6 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
         else {
             mCurrentQuestion = mQuestionBank.getQuestion();
             displayQuestion(mCurrentQuestion);
-        }
+        } */
     }
 }

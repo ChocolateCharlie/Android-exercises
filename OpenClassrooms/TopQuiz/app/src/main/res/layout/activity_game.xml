@@ -1,4 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
+<!-- Layout of the Game screen -->
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
@@ -7,6 +8,7 @@
     android:orientation="vertical"
     tools:context="com.example.topquiz.controller.GameActivity">
 
+    <!-- Question text -->
     <TextView
         android:id="@+id/activity_game_question_text"
         android:layout_width="match_parent"
@@ -22,6 +24,7 @@
         android:gravity="center"
         android:text="Question ?" />
 
+    <!-- First option text -->
     <Button
         android:id="@+id/activity_game_answer1_btn"
         android:layout_width="match_parent"
@@ -33,6 +36,7 @@
         android:textSize="20sp"
         android:text="Answer 1" />
 
+    <!-- Second option text -->
     <Button
         android:id="@+id/activity_game_answer2_btn"
         android:layout_width="match_parent"
@@ -44,6 +48,7 @@
         android:textSize="20sp"
         android:text="Answer 2" />
 
+    <!-- Third option text -->
     <Button
         android:id="@+id/activity_game_answer3_btn"
         android:layout_width="match_parent"
@@ -55,6 +60,7 @@
         android:textSize="20sp"
         android:text="Answer 3" />
 
+    <!-- Fourth option text -->
     <Button
         android:id="@+id/activity_game_answer4_btn"
         android:layout_width="match_parent"

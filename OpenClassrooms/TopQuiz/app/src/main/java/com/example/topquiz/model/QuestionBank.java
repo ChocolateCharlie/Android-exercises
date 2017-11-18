@@ -5,6 +5,14 @@ import java.util.List;
 
 
 
+/**     QuestionBank
+ * Question manager.
+ * @author ChocolateCharlie
+ * @version 1.0
+ * @param mQuestionList         a [List] of [Question]
+ *                              @see Question
+ * @param mNextQuestionIndex    an index [int] on the next question to read in mQuestionList
+ */
 public class QuestionBank {
     private List<Question> mQuestionList;
     private int mNextQuestionIndex;
